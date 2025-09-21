@@ -1,15 +1,59 @@
 /* Home Page */
 
-.header {
-  width: 100% height 80px;
-  display: block;
-  background-color: black;
+* {
+  background-color: #d8e1e8;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-
-.website_name {
-  color: red;
-}
-
 #main-box {
-  margin: 10%;
+  margin: 5vh auto;
+  height: 90vh;
+  width: 95%;
+  padding: 10px;
+
+  background-color: white;
+  border: 1px white;
+  border-radius: 15px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+}
+.website-name {
+  margin: 0;
+  background-color: white;
+  font-size: 50px;
+  padding: 25px 0px 0px 20px;
+}
+
+.post {
+  margin: 50px 40px;
+  background-color: white;
+  border: 2px solid black;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.button {
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin: 5px;
+}
+.button-div {
+  margin: 0;
+  padding: 5px;
+  background-color: white;
+}
+
+.button:hover {
+  background-color: #d8e1e8;
 }
