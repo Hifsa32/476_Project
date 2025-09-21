@@ -30,11 +30,18 @@
   padding: 25px 0px 0px 20px;
 }
 
+.post-container {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
 .post {
   margin: 50px 40px;
   background-color: white;
   border: 2px solid black;
-  padding: 2px;
+  padding: 10px;
   border-radius: 5px;
 }
 
@@ -56,4 +63,50 @@
 
 .button:hover {
   background-color: #d8e1e8;
+}
+
+.time,
+.location {
+  background-color: white;
+  margin: 0px 20px 0px 0px;
+  font-size: small;
+}
+
+.tag {
+  background-color: #428724;
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+}
+
+.description {
+  background-color: white;
+}
+
+.post-title {
+  background-color: white;
+  font-size: larger;
+  font-weight: 900;
+}
+
+/* Login Page */
+
+.login-container {
+  margin: 100px auto;
+  height: 60vh;
+  width: 30%;
+  padding: 10px;
+
+  background-color: white;
+  border: 1px white;
+  border-radius: 15px;
+}
+
+.login-header {
+  margin: 0;
+  background-color: white;
+  font-size: 35px;
+  padding: 25px 0px;
+  text-align: center;
 }
