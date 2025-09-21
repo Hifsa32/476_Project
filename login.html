@@ -8,9 +8,21 @@
   </head>
   <body>
     <div class="login-container">
-      <form class="login-form">
-        <h1 class="login-header">Login</h1>
+      <h1 class="login-header">Login</h1>
+
+      <form action="home.html" method="post" class="login-form">
+        <div class="login-input-div">
+          <label class="login-label" for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="login-input-div">
+          <label class="login-label" for="password">Password</label>
+          <input type="text" id="password" name="password" required />
+        </div>
+        <button type="submit">Login</button>
       </form>
+      <span class="login-signup-msg">Not a member?</span>
+      <a class="login-signup-link" href="signup.html">Signup</a>
     </div>
   </body>
 </html>
