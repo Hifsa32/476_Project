@@ -1,0 +1,15 @@
+/* Home Page */
+
+.header {
+  width: 100% height 80px;
+  display: block;
+  background-color: black;
+}
+
+.website_name {
+  color: red;
+}
+
+#main-box {
+  margin: 10%;
+}
