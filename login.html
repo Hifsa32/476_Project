@@ -11,18 +11,28 @@
       <h1 class="login-header">Login</h1>
 
       <form action="home.html" method="post" class="login-form">
-        <div class="login-input-div">
-          <label class="login-label" for="username">Username</label>
-          <input type="text" id="username" name="username" required />
-        </div>
-        <div class="login-input-div">
-          <label class="login-label" for="password">Password</label>
-          <input type="text" id="password" name="password" required />
-        </div>
-        <button type="submit">Login</button>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          placeholder="Username"
+        />
+
+        <input
+          type="text"
+          id="password"
+          name="password"
+          required
+          placeholder="Password"
+        />
+
+        <button id="login-button" type="submit">Login</button>
+        <p class="login-signup-msg">
+          Don't have an account?
+          <a class="login-signup-link" href="signup.html">Signup</a>
+        </p>
       </form>
-      <span class="login-signup-msg">Not a member?</span>
-      <a class="login-signup-link" href="signup.html">Signup</a>
     </div>
   </body>
 </html>

@@ -90,11 +90,12 @@
   font-weight: 900;
 }
 
-/* Login Page */
+/* Login Page and Signup Page*/
 
-.login-container {
+.login-container,
+.signup-container {
   margin: 100px auto;
-  height: 60vh;
+  height: 65vh;
   width: 30%;
   padding: 10px;
 
@@ -103,22 +104,66 @@
   border-radius: 15px;
 }
 
-.login-header {
-  margin: 0;
+.login-header,
+.signup-header {
+  margin: 0px;
   background-color: white;
   font-size: 35px;
   padding: 25px 0px;
   text-align: center;
+  color: #444444;
 }
 
 .login-form,
-.login-input-div,
 .login-signup-msg,
-.login-signup-link {
+.login-signup-link,
+.signup-form {
   background-color: white;
 }
 
-.login-label {
-  background-color: white;
-  margin: 40px 30px;
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 10px;
+  margin: 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+input::placeholder {
+  color: grey;
+}
+
+#login-button,
+#signup-button {
+  padding: 10px;
+  margin: 25px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  color: #444444;
+  font-size: larger;
+  font-weight: bold;
+}
+
+#login-button:hover,
+#signup-button:hover {
+  cursor: pointer;
+}
+
+.login-signup-msg {
+  text-align: center;
+  margin-top: 0px;
+  font-size: small;
+  color: grey;
+}
+
+.login-signup-link {
+  text-decoration: none;
+  font-size: small;
+  color: #444444;
+  font-weight: 600;
 }
