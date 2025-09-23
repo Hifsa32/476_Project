@@ -90,6 +90,26 @@
   font-weight: 900;
 }
 
+/* Create Button on Dashboard */
+
+.create-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  text-decoration: none;
+  background-color: #d8e1e8;
+  color: black;
+  z-index: 1000;
+}
+
 /* Login Page and Signup Page*/
 
 .login-container,
