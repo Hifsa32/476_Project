@@ -1,0 +1,23 @@
+{% extends "registration/base.html" %} {% load static %} {% block title %}Login
+Page{% endblock %} {% block content %}
+
+<div class="login-container">
+  <h2 class="login-header">Login</h2>
+  <form method="POST">
+    {% csrf_token %}
+
+    <label for="{{ form.username.id_for_label }}">Username</label>
+    {{ form.username }}
+    <label for="{{ form.password.id_for_label }}">Password</label>
+    {{ form.password }}
+
+    <button type="submit" id="login-button">Log In</button>
+  </form>
+
+  <p class="login-signup-msg">
+    Don't have an account?
+    <a href="" class="login-signup-link">Sign Up</a>
+  </p>
+</div>
+
+{% endblock content %}
