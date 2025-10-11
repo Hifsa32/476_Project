@@ -1,0 +1,63 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Signup</title>
+  </head>
+  <body>
+    <header class="header-container">
+      <h1 class="app-name">Unfiltered</h1>
+    </header>
+    <div class="signup-container">
+      <h1 class="signup-header">Signup</h1>
+
+      <form action="home.html" method="post" class="signup-form">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          placeholder="Username"
+        />
+        <input
+          type="text"
+          id="email"
+          name="email"
+          required
+          placeholder="Email"
+        />
+        <input
+          type="text"
+          id="password"
+          name="password"
+          required
+          placeholder="Password"
+        />
+        <input
+          type="text"
+          id="cpassword"
+          name="cpassword"
+          required
+          placeholder="Confirm Password"
+        />
+
+        <button id="signup-button" type="submit">Signup</button>
+      </form>
+    </div>
+  </body>
+</html> -->
+
+{% extends "registration/base.html" %} {% load static %} {% block title %}Login
+Page{% endblock %} {% block content %}
+
+<div class="signup-container">
+  <h2 class="signup-header">Signup</h2>
+  <form action="home.html" method="post" class="signup-form">
+    {% csrf_token %} {{form}}
+    <button id="signup-button" type="submit">Signup</button>
+  </form>
+</div>
+
+{% endblock content %}

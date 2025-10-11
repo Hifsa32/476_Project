@@ -1,0 +1,113 @@
+/* General */
+body {
+  margin: 0;
+  font-family: Arial, san-serif;
+  background: white;
+  color: 333;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  background-color: #192b3d;
+  color: white;
+}
+
+.header-container nav a {
+  color: white;
+  margin-left: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-container nav a:hover,
+.header-container nav a.active {
+  background-color: #f5f6fa;
+  color: #192b3d;
+  border-radius: 6px;
+  padding: 4px 7px;
+}
+/* * Login Page and Signup Page*/
+form label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="file"],
+form textarea {
+  width: 95%;
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #dfe6e9;
+  border-radius: 7px;
+  margin-bottom: 16px;
+}
+
+form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.login-container,
+.signup-container {
+  margin: 100px auto;
+  height: 65vh;
+  width: 30%;
+  padding: 10px;
+}
+
+.login-header,
+.signup-header {
+  text-align: center;
+  color: #2c3e50;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input::placeholder {
+  color: grey;
+}
+
+#login-button,
+#signup-button {
+  padding: 10px;
+  margin: 25px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+
+  background: #2c3e50;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+}
+
+#login-button:hover,
+#signup-button:hover {
+  cursor: pointer;
+}
+
+.login-signup-msg {
+  text-align: center;
+  margin-top: 0px;
+  font-size: small;
+  color: grey;
+}
+
+.login-signup-link {
+  text-decoration: none;
+  font-size: small;
+  color: #444444;
+  font-weight: 600;
+}
