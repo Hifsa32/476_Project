@@ -1,0 +1,182 @@
+/* General */
+body {
+  margin: 0;
+  font-family: Arial, san-serif;
+  background: white;
+  color: 333;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  background-color: #192b3d;
+  color: white;
+}
+
+.header-container nav a {
+  color: white;
+  margin-left: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-container nav a:hover,
+.header-container nav a.active {
+  background-color: #f5f6fa;
+  color: #192b3d;
+  border-radius: 6px;
+  padding: 4px 7px;
+}
+
+/* Home Page */
+
+.website-name {
+  margin: 0;
+  background-color: white;
+  font-size: 50px;
+  padding: 25px 0px 0px 20px;
+}
+
+.post-container {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.post {
+  margin: 50px 40px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0px 20px 15px 0px lightgray;
+}
+
+.time,
+.location {
+  background-color: white;
+  margin: 0px 20px 0px 0px;
+  font-size: small;
+}
+
+.tag {
+  background-color: #428724;
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+}
+
+.description {
+  background-color: white;
+}
+
+.post-title {
+  background-color: white;
+  font-size: larger;
+  font-weight: 900;
+}
+
+/* Create Button on Index */
+
+.create-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  text-decoration: none;
+  color: #192b3d;
+  z-index: 1000;
+}
+
+/* Login Page and Signup Page*/
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+form input[type="text"],
+form input[type="file"],
+form textarea {
+  width: 95%;
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #dfe6e9;
+  border-radius: 7px;
+  margin-bottom: 16px;
+}
+
+form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.login-container,
+.signup-container {
+  margin: 100px auto;
+  height: 65vh;
+  width: 30%;
+  padding: 10px;
+}
+
+.login-header,
+.signup-header {
+  text-align: center;
+  color: #2c3e50;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input::placeholder {
+  color: grey;
+}
+
+#login-button,
+#signup-button {
+  padding: 10px;
+  margin: 25px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+
+  background: #2c3e50;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+}
+
+#login-button:hover,
+#signup-button:hover {
+  cursor: pointer;
+}
+
+.login-signup-msg {
+  text-align: center;
+  margin-top: 0px;
+  font-size: small;
+  color: grey;
+}
+
+.login-signup-link {
+  text-decoration: none;
+  font-size: small;
+  color: #444444;
+  font-weight: 600;
+}
