@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="general.css" />
+    <link rel="stylesheet" href="profile.css" />
+    <title>My Profile</title>
+  </head>
+  <body>
+    <!-- Top header -->
+    <header class="header-container">
+      <h1 class="app-name">Unfiltered</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="maps.html">Explore</a>
+        <a href="profile.html">My Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="report.html">Report</a>
+        <a href="create-post.html">New Post</a>
+      </nav>
+    </header>
+
+    <!-- Profile page starts here  -->
+    <main class="profile-page">
+      <!-- Left panel with Profile info -->
+      <div class="profile-sidepanel">
+        <div class="profile-box">
+          <img src="media-4.jpg" alt="media-2.jpg" class="profile-pic" />
+          <h2 class="profile-name">Selena Gomez</h2>
+          <p class="profile-bio">Actress • Simger</p>
+
+          <div class="profile-details">
+            <div><strong>120</strong><span>Posts</span></div>
+            <div><strong>450</strong><span>Followers</span></div>
+            <div><strong>380</strong><span>Following</span></div>
+          </div>
+
+          <button class="edit-button">Edit Profile</button>
+        </div>
+      </div>
+
+      <!-- Right panel with posts, likes and media -->
+      <section class="profile-content">
+        <div class="profile-tabs">
+          <button class="tab active" onclick="showTab('posts')">Posts</button>
+          <button class="tab" onclick="showTab('liked')">Liked</button>
+          <button class="tab" onclick="showTab('media')">Media</button>
+        </div>
+
+        <!-- Posts list -->
+        <div class="tab-content active" id="posts">
+          <div class="post-box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+          <div class="post-box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+          <div class="post-box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+        </div>
+
+        <!-- Liked posts list -->
+        <div class="tab-content" id="liked" style="display: none">
+          <div class="post-box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+          <div class="post-box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+        </div>
+
+        <!-- Media lists -->
+        <div class="tab-content" id="media" style="display: none">
+          <div class="media-grid">
+            <img src="media-1.jpg" alt="media-4.jpg" />
+            <img src="media-2.jpg" alt="media-3.jpg" />
+            <img src="media-3.jpg" alt="media-2.jpg" />
+            <img src="media-4.jpg" alt="media-1.jpg" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function showTab(tabName) {
+        // Hide all tab content
+        var contents = document.querySelectorAll(".tab-content");
+        for (var i = 0; i < contents.length; i++) {
+          contents[i].style.display = "none";
+          contents[i].classList.remove("active");
+        }
+
+        var tabs = document.querySelectorAll(".tab");
+        for (var i = 0; i < tabs.length; i++) {
+          tabs[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+
+        event.target.classList.add("active");
+      }
+    </script>
+  </body>
+</html>

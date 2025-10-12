@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="general.css" />
+    <link rel="stylesheet" href="settings.css" />
+    <title>Settings</title>
+  </head>
+  <body>
+    <header class="header-container">
+      <h1 class="app-name">Unfiltered</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="maps.html">Explore</a>
+        <a href="profile.html">Profile</a>
+        <a href="settings.html" class="active">Settings</a>
+        <a href="report.html">Report</a>
+        <a href="create-post.html">New Post</a>
+      </nav>
+    </header>
+
+    <main class="settings-layout">
+      <!-- Left panel -->
+      <div class="settings-sidepanel">
+        <div class="settings-box">
+          <button onclick="showTab(this, 'profile')">Profile</button>
+          <button onclick="showTab(this, 'account')">Account</button>
+          <button onclick="showTab(this, 'security')">Security</button>
+          <button onclick="showTab(this, 'privacy')">Privacy</button>
+          <button onclick="showTab(this, 'notifications')">
+            Notifications
+          </button>
+          <button onclick="showTab(this, 'appearance')">Appearance</button>
+          <button onclick="showTab(this, 'logout')">Logout</button>
+        </div>
+      </div>
+
+      <!-- Right panel -->
+      <div class="settings-content">
+        <!-- Profile -->
+        <section id="profile" class="settings-section active">
+          <h2>Profile Settings</h2>
+          <p>
+            <label
+              >Name: <input type="text" placeholder="Enter your name"
+            /></label>
+          </p>
+          <p>
+            <label
+              >Bio:
+              <textarea placeholder="Tell us about yourself..."></textarea>
+            </label>
+          </p>
+        </section>
+
+        <!-- Account -->
+        <section id="account" class="settings-section">
+          <h2>Account Settings</h2>
+          <p>
+            <label>Email: <input type="email" value="user@email.com" /></label>
+          </p>
+          <p>
+            <label
+              >Username: <input type="text" placeholder="Enter username"
+            /></label>
+          </p>
+        </section>
+
+        <!-- Security -->
+        <section id="security" class="settings-section">
+          <h2>Security Settings</h2>
+          <p>Password: <button>Change</button></p>
+          <p>Two-Factor Authentication: <button>Turn On</button></p>
+        </section>
+
+        <!-- Privacy -->
+        <section id="privacy" class="settings-section">
+          <h2>Privacy Settings</h2>
+          <label
+            ><input type="checkbox" checked /> Account visible to
+            everyone</label
+          >
+        </section>
+
+        <!-- Notifications -->
+        <section id="notifications" class="settings-section">
+          <h2>Notification Settings</h2>
+          <label><input type="checkbox" /> Email alerts</label><br />
+          <label><input type="checkbox" checked /> Push notifications</label>
+        </section>
+
+        <!-- Appearance -->
+        <section id="appearance" class="settings-section">
+          <h2>Appearance Settings</h2>
+          <label
+            >Theme:
+            <select>
+              <option>Light</option>
+              <option>Dark</option>
+            </select>
+          </label>
+        </section>
+
+        <!-- Logout -->
+        <section id="logout" class="settings-section">
+          <h2>Logout</h2>
+          <button>Log Out</button>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      function showTab(button, tabId) {
+        // hide all sections
+        document.querySelectorAll(".settings-section").forEach((sec) => {
+          sec.classList.remove("active");
+        });
+
+        // show the selected section
+        document.getElementById(tabId).classList.add("active");
+
+        // highlight active button
+        document.querySelectorAll(".settings-box button").forEach((button) => {
+          button.classList.remove("active");
+        });
+        button.classList.add("active");
+      }
+    </script>
+  </body>
+</html>

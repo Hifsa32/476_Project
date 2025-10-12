@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="general.css" />
+    <link rel="stylesheet" href="create-post.css" />
+
+    <title>New Post</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header-container">
+      <h1 class="app-name">Unfiltered</h1>
+      <nav>
+        <a href="index.html">Cancel</a>
+        <a href="maps.html">Map</a>
+        <a href="profile.html">Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="report.html">Report Post</a>
+        <a href="create-post.html">New Post</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="create-post-box">
+        <h1>Create a New Post</h1>
+        <form>
+          <!-- Title -->
+          <label for="post-title">Title:</label>
+          <input
+            type="text"
+            id="post-title"
+            name="post-title"
+            placeholder="Enter a title"
+            required
+          />
+
+          <!-- Location -->
+          <label for="post-location">Location:</label>
+          <input
+            type="text"
+            id="post-location"
+            name="post-location"
+            placeholder="Add a location"
+            required
+          />
+
+          <!-- Tags -->
+          <label>Tags:</label>
+          <div class="tags-container">
+            <button type="button" class="tag-button">Political Unrest</button>
+            <button type="button" class="tag-button">Natural Disaster</button>
+            <button type="button" class="tag-button">Flood</button>
+            <button type="button" class="tag-button">Wildfire</button>
+          </div>
+
+          <!-- Description -->
+          <label for="post-description">Description:</label>
+          <textarea
+            id="post-description"
+            name="post-description"
+            placeholder="Describe the incident here..."
+            required
+          ></textarea>
+
+          <!-- File upload -->
+          <label for="file">Add media:</label>
+          <input type="file" id="file" name="file" multiple />
+
+          <!-- Buttons -->
+          <div class="form-actions">
+            <button type="button" class="drafts-button">Save Draft</button>
+            <button type="submit" class="post-button">Post</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

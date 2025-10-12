@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="general.css" />
+    <link rel="stylesheet" href="report.css" />
+    <title>Report Post</title>
+  </head>
+  <body>
+    <!-- Page content. starts here -->
+
+    <!-- Header -->
+    <header class="header-container">
+      <h1 class="app-name">Unfiltered</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="maps.html">Explore</a>
+        <a href="profile.html">My Profile</a>
+        <a href=" settings.html">Settings</a>
+        <a href="report.html">Report</a>
+        <a href="create-post.html">New Post</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Report this Post</h1>
+      <p>What's wrong with this post? (select all that apply)</p>
+
+      <form id="report-form">
+        <label>
+          <input type="checkbox" name="reason" value="spam" />
+
+          It's spam or fake engagement </label
+        ><br />
+
+        <label>
+          <input type="checkbox" name="reason" value="harassment" />
+
+          Harassment or bullying </label
+        ><br />
+
+        <label>
+          <input type="checkbox" name="reason" value="misinformation" />
+
+          False information or misleading content </label
+        ><br />
+
+        <label>
+          <input type="checkbox" name="reason" value="hate" />
+
+          Hate speech or discrimination </label
+        ><br />
+
+        <label>
+          <input type="checkbox" name="reason" value="inappropriate" />
+
+          Inappropriate or graphic content </label
+        ><br />
+
+        <label>
+          <input type="checkbox" name="reason" value="copyright" />
+
+          Copyright violation </label
+        ><br />
+
+        <label>
+          <input
+            type="checkbox"
+            name="reason"
+            value=" other"
+            id=" otherCheckbox"
+          />
+
+          Something else:
+
+          <input
+            type="text"
+            name="otherReason"
+            id="otherText"
+            placeholder="Tell us what..."
+            disabled
+          /> </label
+        ><br />
+
+        <label for="details">Anything else we should know? </label><br />
+
+        <textarea
+          id="details"
+          name="details"
+          placeholder="Optional - help us understand the issue better"
+        >
+        </textarea
+        ><br />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- Page content. ends here -->
+    </main>
+  </body>
+</html>
