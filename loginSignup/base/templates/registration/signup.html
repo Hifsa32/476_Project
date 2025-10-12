@@ -54,8 +54,14 @@ Page{% endblock %} {% block content %}
 
 <div class="signup-container">
   <h2 class="signup-header">Signup</h2>
-  <form action="home.html" method="post" class="signup-form">
-    {% csrf_token %} {{form}}
+  <form action="" method="post" class="signup-form">
+    {% csrf_token %} {% for field in form %}
+    <div class="field-wrapper">
+      {{ field.label_tag }} {{ field }} {% for error in field.errors %}
+      <span class="error-text">{{ error }}</span>
+      {% endfor %}
+    </div>
+    {% endfor %}
     <button id="signup-button" type="submit">Signup</button>
   </form>
 </div>
