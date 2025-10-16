@@ -111,3 +111,146 @@ input::placeholder {
   color: #444444;
   font-weight: 600;
 }
+
+/* profile page css starts here */
+.profile-page {
+  display: flex;
+  margin: 30px auto;
+  max-width: 1050px;
+  gap: 35px;
+  padding: 8px 20px;
+  margin-top: 45px;
+}
+
+/* left box */
+.profile-sidepanel {
+  width: 330px;
+  flex-shrink: 0;
+}
+
+.profile-box {
+  background: #fff;
+  padding: 27px;
+  padding-top: 20px;
+  border-radius: 11px;
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.14);
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+/* profile pic */
+.profile-pic {
+  width: 118px;
+  height: 125px;
+  border-radius: 50%;
+  margin-bottom: 13px;
+  object-fit: cover;
+  border: 3px solid #a6cdba;
+}
+
+/* name + bio */
+.profile-name {
+  font-size: 21px;
+  color: #192b3d;
+  margin: 7px 0px;
+}
+.profile-bio {
+  font-size: 14.5px;
+  color: #444;
+  margin-bottom: 18px;
+  margin-top: 5px;
+}
+
+/* details arae */
+.profile-details {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px 0px 18px;
+}
+.profile-details div {
+  text-align: center;
+  margin: 0 5px;
+}
+.profile-details strong {
+  font-size: 19px;
+  color: #2c3e50;
+}
+.profile-details span {
+  font-size: 12px;
+  color: #666;
+}
+
+/* edit buton */
+.edit-button {
+  background: #2c3e50;
+  color: #fff;
+  border: none;
+  padding: 11px 17px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.edit-button:hover {
+  background: #1a252f;
+}
+
+/* right content */
+.profile-content {
+  flex: 1;
+  margin-top: -5px;
+}
+
+/* tabs */
+.profile-tabs {
+  display: flex;
+  border-bottom: 1.8px solid #eee;
+  margin-bottom: 17px;
+}
+.tab {
+  flex: 1;
+  padding: 10px 0px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #2c3e50;
+  transition: color 0.2s;
+}
+.tab:hover {
+  color: #000;
+}
+.tab.active {
+  color: #2c3e50;
+  border-bottom: 3px solid #a6cdba;
+  font-size: 15.8px;
+}
+
+/* posts, liked, media */
+.post-box {
+  background: #fff;
+  padding: 18px;
+  border-radius: 9px;
+  margin-bottom: 13px;
+  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.08);
+  font-size: 15px;
+  line-height: 1.4;
+}
+.post-box:hover {
+  box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* media list*/
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 14px;
+}
+.media-grid img {
+  width: 100%;
+  height: 160px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.12);
+}
+
+/* Profile page css ends here */
