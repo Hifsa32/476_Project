@@ -2,11 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import  UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import  login_required
 from django.contrib import auth 
+from django.contrib.auth.models import User 
+from posts.models import Post
 
-
-# @login_required
-def home (request): 
-    return render (request, "home.html", {})
 
 def authView (request):
     if request.method == "POST": 
@@ -42,5 +40,17 @@ def logout (request):
     auth.logout(request)
     return redirect('posts:home') 
 
+
+@login_required 
 def profile (request): 
-      return render (request, "accounts/profile.html", {})
+    user = request.user
+    user_posts = Post.objects.filter(author=user).order_by('-date_time')
+
+    
+    context = {
+        'profile_user': user,
+        'user_posts': user_posts,
+    }
+    
+    
+    return render(request, 'accounts/profile.html', context)

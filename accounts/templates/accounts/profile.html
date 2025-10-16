@@ -1,17 +1,18 @@
-{% extends "accounts/profile_base.html" %} {% load static %} {% block title
-%}Login Page{% endblock %} {% block content %}
+{% extends "accounts/profile_base.html" %} {% load static %} {% block title %}
+{{ profile_user.username }}'s Profile Page{% endblock %} {% block content %}
 
 <!-- Left panel with Profile info -->
 <div class="profile-sidepanel">
   <div class="profile-box">
+    <!-- NEED TO IMPORT FROM SETTIGNS -->
     <img src="media-4.jpg" alt="media-2.jpg" class="profile-pic" />
-    <h2 class="profile-name">Selena Gomez</h2>
-    <p class="profile-bio">Actress • Simger</p>
+    <h2 class="profile-name">{{ profile_user.username }}</h2>
+
+    <!-- NEED TO IMPORT FROM SETTIGNS -->
+    <!-- <p class="profile-bio">Actress • Simger</p> -->
 
     <div class="profile-details">
-      <div><strong>120</strong><span>Posts</span></div>
-      <!-- <div><strong>450</strong><span>Followers</span></div>
-      <div><strong>380</strong><span>Following</span></div> -->
+      <div><strong>{{ user_posts.count }}</strong><span> Posts</span></div>
     </div>
 
     <button class="edit-button">Edit Profile</button>
@@ -22,32 +23,32 @@
 <section class="profile-content">
   <div class="profile-tabs">
     <button class="tab active" onclick="showTab('posts')">Posts</button>
-    <button class="tab" onclick="showTab('liked')">Liked</button>
-    <button class="tab" onclick="showTab('media')">Media</button>
+    <button class="tab" onclick="showTab('notifications')">
+      Notifications
+    </button>
   </div>
 
   <!-- Posts list -->
   <div class="tab-content active" id="posts">
-    <div class="post-box">The quick brown fox jumps over the lazy dog.</div>
-    <div class="post-box">The quick brown fox jumps over the lazy dog.</div>
-    <div class="post-box">The quick brown fox jumps over the lazy dog.</div>
-  </div>
-
-  <!-- Liked posts list
-  <div class="tab-content" id="liked" style="display: none">
-    <div class="post-box">The quick brown fox jumps over the lazy dog.</div>
-    <div class="post-box">The quick brown fox jumps over the lazy dog.</div>
-  </div>
-
-Media lists
-  <div class="tab-content" id="media" style="display: none">
-    <div class="media-grid">
-      <img src="media-1.jpg" alt="media-4.jpg" />
-      <img src="media-2.jpg" alt="media-3.jpg" />
-      <img src="media-3.jpg" alt="media-2.jpg" />
-      <img src="media-4.jpg" alt="media-1.jpg" />
+    {% for post in user_posts %}
+    <div class="post-box">
+      <strong>{{ post.title }}</strong>
+      <p>{{ post.description }}</p>
+      <small
+        >Posted on: {{ post.date_time|date:"Y-m-d H:i" }} from {{post.location}}
+        with tag {{ post.get_tag_display }}
+      </small>
     </div>
-  </div> -->
+    {% empty %}
+    <div class="post-box">You haven't made any posts yet!</div>
+    {% endfor %}
+  </div>
+
+  <!-- IMPORTS FROM REPORTING APP -->
+  <!-- Notifications list -->
+  <div class="tab-content" id="notifications" style="display: none">
+    <div class="post-box">No New Notifications</div>
+  </div>
 </section>
 
 <script>

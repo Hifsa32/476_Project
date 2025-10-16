@@ -9,25 +9,22 @@ Page{% endblock %} {% block content %} {% if user.is_authenticated %}
   {% if user.is_authenticated %} {% for post in posts %}
   <div class="post">
     <h2>{{ post.title }}</h2>
-    <small>
-      Posted by {{ post.author.username }} on {{ post.date_time|date:"M d, Y" }}
-    </small>
     <span class="tag tag-{{ post.tag|lower }}">{{ post.get_tag_display }}</span>
+    <p>{{ post.author.username }}</p>
+    <small>{{ post.date_time|date:"M d, Y" }} - {{post.location}}</small>
+
     <p>{{ post.description }}</p>
   </div>
-  {% empty %}
-  <p class="text-center">No posts have been uploaded yet.</p>
-  {% endfor %} {% else %} {% for post in posts|slice:":6" %}
+  {% endfor %} {% else %} {% for post in posts %}
+
   <div class="post">
     <h2>{{ post.title }}</h2>
-
-    <small>
-      Posted by {{ post.author.username }} on {{ post.date_time|date:"M d, Y" }}
-    </small>
     <span class="tag tag-{{ post.tag|lower }}">{{ post.get_tag_display }}</span>
+    <p>{{ post.author.username }}</p>
+    <small>{{ post.date_time|date:"M d, Y" }} - {{post.location}}</small>
+
     <p>{{ post.description }}</p>
   </div>
   {% endfor %} {% endif %}
 </div>
-
 {% endblock content %}
