@@ -43,4 +43,4 @@ def logout (request):
     return redirect('posts:home') 
 
 def profile (request): 
-      return render (request, "profile.html", {})
+      return render (request, "accounts/profile.html", {})
