@@ -1,0 +1,36 @@
+{% load static %} {% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/posts/css/posts_style.css' %}" />
+    <title>{% block title %}Home/Posts{% endblock %}</title>
+  </head>
+  <body>
+    <header class="header-container">
+      <h1 class="app-name">Unfiltered</h1>
+
+      {% if user.is_authenticated %}
+      <nav>
+        <a class="link" href="">Map</a>
+        <a class="link" href="">Profile</a>
+        <a class="link" href="">Settings</a>
+        <a class="link" href="">Report Post</a>
+        <a class="link" href="">New Post</a>
+        <a class="link" href="{% url 'accounts:logout' %}">Log Out</a>
+      </nav>
+
+      {% else %}
+      <nav>
+        <a class="link" href="{% url 'accounts:login' %}">Login</a>
+        <a class="link" href="{% url 'accounts:authView' %}">Signup</a>
+      </nav>
+
+      {% endif %}
+    </header>
+
+    <main>{% block content %} {% endblock %}</main>
+
+    <footer></footer>
+  </body>
+</html>

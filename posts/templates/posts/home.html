@@ -1,34 +1,7 @@
-<!--
-
-   
- <main>
-      <div class="post-container">
-        <div class="post">
-          <span class="tag">Natural</span>
-          <h3 class="post-title">LA Wildfires</h3>
-          <span class="time">2025</span>
-          <span class="location">LA, USA</span>
-          <p class="description">
-            The Palisades Fire ignited on January 7 near the Pacific Palisades
-            neighborhood in Los Angeles, rapidly expanding to encompass 5,000
-            acres (2,000 ha; 7.8 sq mi; 20 km2).
-          </p>
-        </div>
-
-        <div class="post">
-          <span class="tag">Natural</span>
-          <h3 class="post-title">TITLE</h3>
-          <span class="time">TIME</span>
-          <span class="location">LOCATION</span>
-          <p class="description">DESCRIPTION</p>
-        </div>
-
-   -->
-
-{% extends "accounts/base.html" %} {% load static %} {% block title %}Home
+{% extends "posts/posts_base.html" %} {% load static %} {% block title %}Home
 Page{% endblock %} {% block content %} {% if user.is_authenticated %}
 <div class="create-button">
-  <a href="{% url 'posts:create_post' %}">+</a>
+  <a class="create" href="{% url 'posts:create_post' %}">+</a>
 </div>
 {% endif %}
 
@@ -39,18 +12,20 @@ Page{% endblock %} {% block content %} {% if user.is_authenticated %}
     <small>
       Posted by {{ post.author.username }} on {{ post.date_time|date:"M d, Y" }}
     </small>
-
-    <p>{{ post.description|truncatechars:150 }}</p>
+    <span class="tag tag-{{ post.tag|lower }}">{{ post.get_tag_display }}</span>
+    <p>{{ post.description }}</p>
   </div>
   {% empty %}
   <p class="text-center">No posts have been uploaded yet.</p>
   {% endfor %} {% else %} {% for post in posts|slice:":6" %}
   <div class="post">
     <h2>{{ post.title }}</h2>
+
     <small>
       Posted by {{ post.author.username }} on {{ post.date_time|date:"M d, Y" }}
     </small>
-    <p>{{ post.description|truncatechars:150 }}</p>
+    <span class="tag tag-{{ post.tag|lower }}">{{ post.get_tag_display }}</span>
+    <p>{{ post.description }}</p>
   </div>
   {% endfor %} {% endif %}
 </div>
