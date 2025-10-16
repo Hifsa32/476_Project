@@ -6,14 +6,20 @@ from .forms import PostForm
 
 
 def home(request):
+    
+    posts_to_display = None
 
-    all_posts = Post.objects.all().order_by('-date_time') 
-
+    if request.user.is_authenticated:
+        posts_to_display = Post.objects.all().order_by('-date_time')
+    else:
+        posts_to_display = Post.objects.all().order_by('-date_time')[:6]
+        
     context = {
-        'posts': all_posts,
-        'page_title': 'Unfiltered - Home'
+        'posts': posts_to_display,
     }
+    
     return render(request, 'posts/home.html', context)
+   
 
 
 @login_required 
