@@ -1,22 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="general.css" />
-    <link rel="stylesheet" href="settings.css" />
+    <!-- keep your own CSS files -->
+    <link rel="stylesheet" href="{% static 'css/general.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}" />
     <title>Settings</title>
   </head>
   <body>
     <header class="header-container">
       <h1 class="app-name">Unfiltered</h1>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="maps.html">Explore</a>
-        <a href="profile.html">Profile</a>
-        <a href="settings.html" class="active">Settings</a>
-        <a href="report.html">Report</a>
-        <a href="create-post.html">New Post</a>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'maps' %}">Explore</a>
+        <a href="{% url 'profile' %}">Profile</a>
+        <a href="{% url 'settings' %}" class="active">Settings</a>
+        <a href="{% url 'report' %}">Report</a>
+        <a href="{% url 'create_post' %}">New Post</a>
       </nav>
     </header>
 
@@ -112,18 +114,13 @@
 
     <script>
       function showTab(button, tabId) {
-        // hide all sections
-        document.querySelectorAll(".settings-section").forEach((sec) => {
-          sec.classList.remove("active");
-        });
-
-        // show the selected section
+        document
+          .querySelectorAll(".settings-section")
+          .forEach((sec) => sec.classList.remove("active"));
         document.getElementById(tabId).classList.add("active");
-
-        // highlight active button
-        document.querySelectorAll(".settings-box button").forEach((button) => {
-          button.classList.remove("active");
-        });
+        document
+          .querySelectorAll(".settings-box button")
+          .forEach((b) => b.classList.remove("active"));
         button.classList.add("active");
       }
     </script>
