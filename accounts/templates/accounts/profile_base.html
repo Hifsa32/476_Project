@@ -13,8 +13,8 @@
       <nav>
         <a class="link" href="">Map</a>
         <a class="link" href="">Profile</a>
-        <a class="link" href="">Settings</a>
-        <a class="link" href="">Report Post</a>
+        <a class="link" href="{% url 'accounts:settings' %}">Settings</a>
+        <a class="link" href="{% url 'posts:report' %}">Report Post</a>
         <a class="link" href="{% url 'posts:create_post' %}">New Post</a>
         <a class="link" href="{% url 'accounts:logout' %}">Log Out</a>
       </nav>

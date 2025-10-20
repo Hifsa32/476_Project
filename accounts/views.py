@@ -44,3 +44,6 @@ def logout (request):
 
 def profile (request): 
       return render (request, "accounts/profile.html", {})
+
+def settings(request):
+    return render(request, "accounts/settings.html")
