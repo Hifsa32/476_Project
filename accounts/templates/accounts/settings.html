@@ -13,10 +13,9 @@
     <header class="header-container">
       <h1 class="app-name">Unfiltered</h1>
       <nav>
+        <a class="link" href="{% url 'posts:home' %}">Home</a>
         <a href="{% url 'accounts:profile' %}">Profile</a>
-        <a href="{% url 'accounts:settings' %}" class="active">Settings</a>
-        <a href="{% url 'posts:report' %}">Report</a>
-        <a href="{% url 'posts:create_post' %}">New Post</a>
+        <a class="link" href="{% url 'accounts:logout' %}">Log Out</a>
       </nav>
     </header>
 

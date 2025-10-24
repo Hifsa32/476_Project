@@ -24,7 +24,9 @@
   <div class="profile-tabs">
     <button class="tab active" onclick="showTab('posts')">Posts</button>
     <button class="tab" onclick="showTab('notifications')">
-      Notifications
+      Notifications {% if has_new_notifications %}
+      <span style="color: red">!</span>
+      {% endif %}
     </button>
   </div>
 
@@ -47,7 +49,14 @@
   <!-- IMPORTS FROM REPORTING APP -->
   <!-- Notifications list -->
   <div class="tab-content" id="notifications" style="display: none">
-    <div class="post-box">No New Notifications</div>
+    {% for notification in user_notifications %}
+    <div class="post-box">
+      <p>{{ notification.message }}</p>
+      <small>{{ notification.created_at|date:"M d, Y H:i" }}</small>
+    </div>
+    {% empty %}
+    <div class="post-box">No Notifications</div>
+    {% endfor %}
   </div>
 </section>
 

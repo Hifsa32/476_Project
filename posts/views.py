@@ -1,20 +1,22 @@
-from django.shortcuts import render, redirect
-from .models import Post 
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Post, Report, PostReportSubject
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User 
 from .forms import PostForm 
 from django.contrib import messages
-from .models import Report
+from .observers import PostTakedownObserver, AuthorNotificationObserver
 
 
 def home(request):
+
+    active_posts_query = Post.objects.filter(is_active=True).order_by('-date_time')
     
     posts_to_display = None
 
     if request.user.is_authenticated:
-        posts_to_display = Post.objects.all().order_by('-date_time')
+        posts_to_display = active_posts_query
     else:
-        posts_to_display = Post.objects.all().order_by('-date_time')[:6]
+        posts_to_display = active_posts_query[:6]
         
     context = {
         'posts': posts_to_display,
@@ -59,7 +61,11 @@ def create_post(request):
 
 ALLOWED_REASONS = {"spam","harassment","misinformation","hate","inappropriate","copyright","other"}
 
-def report_page(request):
+def report_post(request, post_id):
+
+    post = get_object_or_404(Post, pk=post_id)
+    reporter = request.user
+
     if request.method == "POST":
         reasons = [r.strip() for r in request.POST.getlist("reason")]
         reasons = [r for r in reasons if r in ALLOWED_REASONS]
@@ -88,8 +94,14 @@ def report_page(request):
             reasons=reasons,
             other_reason=other_text if "other" in reasons else "",
             details=details,
-            reporter=request.user if request.user.is_authenticated else None,
+            reporter=reporter,
+            post=post,              
+
         )
+        report_subject = PostReportSubject(post=post, reporter=reporter)
+        report_subject.register(PostTakedownObserver()) 
+        report_subject.register(AuthorNotificationObserver())
+        report_subject.notify()
         messages.success(request, "Thanks! Your report was submitted.")
         return redirect("posts:report")
 

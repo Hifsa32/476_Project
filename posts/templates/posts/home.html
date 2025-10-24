@@ -24,6 +24,9 @@ Page{% endblock %} {% block content %} {% if user.is_authenticated %}
     <small>{{ post.date_time|date:"M d, Y" }} - {{post.location}}</small>
 
     <p>{{ post.description }}</p>
+    <a href="{% url 'posts:report_post' post_id=post.id %}" class="report-link"
+      >!</a
+    >
   </div>
   {% endfor %} {% endif %}
 </div>

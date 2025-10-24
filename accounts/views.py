@@ -40,24 +40,22 @@ def logout (request):
     auth.logout(request)
     return redirect('posts:home') 
 
-
-@login_required 
-def profile (request): 
-<<<<<<< HEAD
+@login_required
+def profile(request):
     user = request.user
     user_posts = Post.objects.filter(author=user).order_by('-date_time')
+    user_notifications = user.notifications.all().order_by('-created_at')
 
-    
     context = {
         'profile_user': user,
         'user_posts': user_posts,
+        'user_notifications': user_notifications,
+        'has_new_notifications': user.notifications.filter(is_new=True).exists()
     }
-    
-    
+
     return render(request, 'accounts/profile.html', context)
-=======
-      return render (request, "accounts/profile.html", {})
+
 
 def settings(request):
     return render(request, "accounts/settings.html")
->>>>>>> origin/main
+
