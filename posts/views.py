@@ -103,6 +103,6 @@ def report_post(request, post_id):
         report_subject.register(AuthorNotificationObserver())
         report_subject.notify()
         messages.success(request, "Thanks! Your report was submitted.")
-        return redirect("posts:report")
+        return redirect("posts:home")
 
-    return render(request, "posts/report.html")
+    return render(request, "posts/report.html", {"post": post})

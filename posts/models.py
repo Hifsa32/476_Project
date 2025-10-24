@@ -34,13 +34,19 @@ class Post(models.Model):
 # Report Page
 
 class Report(models.Model):
+    post = models.ForeignKey(
+        'Post', 
+        on_delete=models.CASCADE,
+        related_name='reports'
+    )
+    
     reporter = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
         blank=True
     )
-    reasons = models.JSONField(default=list)  # stores checkbox values
+    reasons = models.JSONField(default=list) 
     other_reason = models.CharField(max_length=200, blank=True)
     details = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
