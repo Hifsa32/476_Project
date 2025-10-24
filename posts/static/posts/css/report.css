@@ -1,0 +1,79 @@
+/** Report Page CSS starts here **/
+main {
+  max-width: 700px;
+  margin: 23px auto;
+  background: #fff;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+main h1 {
+  color: #192b3d;
+  font-size: 30px;
+  border-bottom: 2px solid #f5f6fa;
+  padding-bottom: 10px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+main p {
+  margin-bottom: 25px;
+  color: #192b3d;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+form input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #a6cdba;
+}
+
+form input[type="text"] {
+  border: 2px solid #dfe6e9;
+  border-radius: 7px;
+  padding: 4px 15px;
+  margin-left: 7px;
+}
+
+form button {
+  font-weight: bold;
+  background: #2c3e50;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 7px;
+
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: none;
+}
+
+form label {
+  align-items: center;
+  display: flex;
+  font-size: 17px;
+  gap: 10px;
+  margin: 7px;
+  font-weight: bold;
+  color: #192b3d;
+}
+
+form textarea {
+  width: 82%;
+  min-height: 85px;
+  margin-bottom: 16px;
+  padding: 12px;
+  font-size: 14px;
+  resize: vertical; /**  */
+  border: 2px solid #dfe6e9;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+form button:hover {
+  background: #1a252f;
+}
+
+/** Report Page CSS ends here **/

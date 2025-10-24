@@ -43,6 +43,7 @@ def logout (request):
 
 @login_required 
 def profile (request): 
+<<<<<<< HEAD
     user = request.user
     user_posts = Post.objects.filter(author=user).order_by('-date_time')
 
@@ -54,3 +55,9 @@ def profile (request):
     
     
     return render(request, 'accounts/profile.html', context)
+=======
+      return render (request, "accounts/profile.html", {})
+
+def settings(request):
+    return render(request, "accounts/settings.html")
+>>>>>>> origin/main

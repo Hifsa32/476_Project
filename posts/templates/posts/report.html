@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'posts/css/general.css' %}" />
+    <link rel="stylesheet" href="{% static 'posts/css/report.css' %}" />
+    <title>Report Post</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header-container">
+      <h1 class="app-name">Unfiltered</h1>
+      <nav>
+        <a href="{% url 'posts:home' %}">Home</a>
+
+        <a href="{% url 'accounts:profile' %}">My Profile</a>
+        <a href="{% url 'accounts:settings' %}">Settings</a>
+        <a href="{% url 'posts:report' %}">Report</a>
+        <a href="{% url 'posts:create_post' %}">New Post</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Report this Post</h1>
+      <p>What's wrong with this post? (select all that apply)</p>
+
+      <form id="report-form" method="post" action="{% url 'posts:report' %}">
+        {% csrf_token %}
+
+        <label>
+          <input type="checkbox" name="reason" value="spam" />
+          It's spam or fake engagement </label
+        ><br />
+
+        <label>
+          <input type="checkbox" name="reason" value="harassment" />
+          Harassment or bullying </label
+        ><br />
+
+        <label>
+          <input type="checkbox" name="reason" value="misinformation" />
+          False information or misleading content </label
+        ><br />
+
+        <label>
+          <input type="checkbox" name="reason" value="hate" />
+          Hate speech or discrimination </label
+        ><br />
+
+        <label>
+          <input type="checkbox" name="reason" value="inappropriate" />
+          Inappropriate or graphic content </label
+        ><br />
+
+        <label>
+          <input type="checkbox" name="reason" value="copyright" />
+          Copyright violation </label
+        ><br />
+
+        <label id="otherLabel">
+          <input
+            type="checkbox"
+            name="reason"
+            value="other"
+            id="otherCheckbox"
+          />
+          Something else:
+          <input
+            type="text"
+            name="otherReason"
+            id="otherText"
+            placeholder="Tell us what..."
+            disabled
+          /> </label
+        ><br />
+
+        <label for="details">Anything else we should know?</label><br />
+        <textarea
+          id="details"
+          name="details"
+          placeholder="Optional - help us understand the issue better"
+        ></textarea
+        ><br />
+
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+
+    <script>
+      (function () {
+        const form = document.getElementById("report-form");
+        const otherCb = document.getElementById("otherCheckbox");
+        const otherTxt = document.getElementById("otherText");
+        const otherErr = document.getElementById("otherError");
+
+        function hideError() {
+          if (otherErr) otherErr.style.display = "none";
+          if (otherTxt) otherTxt.removeAttribute("aria-invalid");
+        }
+
+        function showError(msg) {
+          if (!otherErr) return;
+          otherErr.textContent = msg;
+          otherErr.style.display = "block";
+          otherTxt.setAttribute("aria-invalid", "true");
+        }
+
+        function syncOtherText() {
+          if (!otherCb || !otherTxt) return;
+          const on = otherCb.checked;
+          otherTxt.disabled = !on;
+          otherTxt.required = on;
+          if (!on) {
+            otherTxt.value = "";
+            hideError();
+          }
+        }
+
+        // Prevent submit if “Something else” is checked but text is empty
+
+        if (form) {
+          form.addEventListener("submit", (e) => {
+            if (otherCb && otherCb.checked) {
+              const v = (otherTxt.value || "").trim();
+              if (!v) {
+                e.preventDefault();
+                showError("Please explain why you selected “Something else”.");
+                otherTxt.focus();
+              }
+            }
+          });
+        }
+
+        // Initial state + react to checkbox changes
+        syncOtherText();
+        if (otherCb) otherCb.addEventListener("change", syncOtherText);
+        if (otherTxt)
+          otherTxt.addEventListener("input", () => {
+            if (otherTxt.value.trim()) hideError();
+          });
+      })();
+    </script>
+  </body>
+</html>

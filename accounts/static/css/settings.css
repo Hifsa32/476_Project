@@ -1,0 +1,116 @@
+/* Settings Page Layout */
+.settings-layout {
+  display: flex;
+  width: 87%;
+
+  margin: 30px auto;
+  min-height: 80vh;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px lightgray;
+}
+
+/* Left Side Panel */
+.settings-sidepanel {
+  width: 230px;
+  padding: 25px;
+
+  background-color: #f5f5f5;
+  border-radius: 12px 0 0 12px;
+}
+
+.settings-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings-box button {
+  background-color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 15px;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.settings-box button:hover {
+  background-color: #d8e1e8;
+}
+
+/* Highlight the active tab */
+.settings-box button.active {
+  background-color: #d8e1e8;
+  font-weight: bold;
+}
+
+/* Right Panel */
+.settings-content {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+  border-radius: 0 12px 12px 0;
+}
+
+.settings-section {
+  display: none;
+  background-color: white;
+}
+
+.settings-section.active {
+  display: block;
+}
+
+.settings-section h2 {
+  margin-top: 0;
+  color: #192b3d;
+  font-size: 20px;
+  background-color: white;
+}
+
+.settings-section label,
+.settings-section p {
+  display: block;
+  margin: 12px 0;
+  font-size: 15px;
+  background-color: white;
+}
+
+/* Inputs and Textarea */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  margin-top: 5px;
+  padding: 8px;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 90%;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Checkboxes */
+input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+/* Buttons inside sections */
+.settings-section button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: #192b3d;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.settings-section button:hover {
+  background-color: #1a252f;
+}
