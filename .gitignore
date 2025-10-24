@@ -1,0 +1,8 @@
+# Python generated files
+__pycache__/
+*.pyc
+
+# Django specific files
+*.log
+*.sqlite3
+db.sqlite3
