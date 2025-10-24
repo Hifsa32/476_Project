@@ -1,0 +1,32 @@
+/** This is the general css for all pages **/
+
+body {
+  margin: 0;
+  font-family: Arial, san-serif;
+  background: white;
+  color: 333;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  background-color: #192b3d;
+  color: white;
+}
+
+.header-container nav a {
+  color: white;
+  margin-left: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-container nav a:hover,
+.header-container nav a.active {
+  background-color: #f5f6fa;
+  color: #192b3d;
+  border-radius: 6px;
+  padding: 4px 7px;
+}
