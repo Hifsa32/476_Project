@@ -1,6 +1,9 @@
 {% load static %} {% load widget_tweaks %}
 <!DOCTYPE html>
-<html>
+<html
+  lang="en"
+  class="{% if request.user.is_authenticated and request.user.profile.theme == 'dark' %}dark{% endif %}"
+>
   <head>
     {% load static %}
     <link rel="stylesheet" href="{% static '/loginSignup/css/style.css' %}" />

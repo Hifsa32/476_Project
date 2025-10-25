@@ -189,9 +189,11 @@ input::placeholder {
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
 }
 .edit-button:hover {
   background: #1a252f;
+  text-decoration: none;
 }
 
 /* right content */

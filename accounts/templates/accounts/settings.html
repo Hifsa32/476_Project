@@ -4,9 +4,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="{% static 'css/general.css' %}" />
     <link rel="stylesheet" href="{% static 'css/settings.css' %}" />
+
     <title>Settings</title>
   </head>
   <body>
@@ -19,6 +18,12 @@
       </nav>
     </header>
 
+    {% if messages %} {% for message in messages|slice:":1" %}
+    <div class="messages">
+      <div class="alert {{ message.tags }}">{{ message }}</div>
+    </div>
+    {% endfor %} {% endif %}
+
     <main class="settings-layout">
       <!-- Left panel -->
       <div class="settings-sidepanel">
@@ -26,11 +31,7 @@
           <button onclick="showTab(this, 'profile')">Profile</button>
           <button onclick="showTab(this, 'account')">Account</button>
           <button onclick="showTab(this, 'security')">Security</button>
-          <button onclick="showTab(this, 'privacy')">Privacy</button>
-          <button onclick="showTab(this, 'notifications')">
-            Notifications
-          </button>
-          <button onclick="showTab(this, 'appearance')">Appearance</button>
+
           <button onclick="showTab(this, 'logout')">Logout</button>
         </div>
       </div>
@@ -40,76 +41,59 @@
         <!-- Profile -->
         <section id="profile" class="settings-section active">
           <h2>Profile Settings</h2>
-          <p>
-            <label
-              >Name: <input type="text" placeholder="Enter your name"
-            /></label>
-          </p>
-          <p>
-            <label
-              >Bio:
-              <textarea placeholder="Tell us about yourself..."></textarea>
-            </label>
-          </p>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="which" value="profile" />
+            <p><label>Display name:</label> {{ pform.display_name }}</p>
+            <p><label>Bio:</label> {{ pform.bio }}</p>
+            <p><label>Avatar:</label> {{ pform.avatar }}</p>
+            <button type="submit">Save Changes</button>
+          </form>
         </section>
 
         <!-- Account -->
         <section id="account" class="settings-section">
           <h2>Account Settings</h2>
-          <p>
-            <label>Email: <input type="email" value="user@email.com" /></label>
-          </p>
-          <p>
-            <label
-              >Username: <input type="text" placeholder="Enter username"
-            /></label>
-          </p>
+          <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="which" value="account" />
+            <p><label>Change Username:</label> {{ uform.username }}</p>
+
+            <button type="submit">Save Changes</button>
+          </form>
         </section>
 
         <!-- Security -->
         <section id="security" class="settings-section">
           <h2>Security Settings</h2>
-          <p>Password: <button>Change</button></p>
-          <p>Two-Factor Authentication: <button>Turn On</button></p>
-        </section>
-
-        <!-- Privacy -->
-        <section id="privacy" class="settings-section">
-          <h2>Privacy Settings</h2>
-          <label
-            ><input type="checkbox" checked /> Account visible to
-            everyone</label
-          >
-        </section>
-
-        <!-- Notifications -->
-        <section id="notifications" class="settings-section">
-          <h2>Notification Settings</h2>
-          <label><input type="checkbox" /> Email alerts</label><br />
-          <label><input type="checkbox" checked /> Push notifications</label>
-        </section>
-
-        <!-- Appearance -->
-        <section id="appearance" class="settings-section">
-          <h2>Appearance Settings</h2>
-          <label
-            >Theme:
-            <select>
-              <option>Light</option>
-              <option>Dark</option>
-            </select>
-          </label>
+          <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="which" value="password" />
+            {{ pwform.as_p }}
+            <button type="submit">Change Password</button>
+          </form>
         </section>
 
         <!-- Logout -->
         <section id="logout" class="settings-section">
           <h2>Logout</h2>
-          <button>Log Out</button>
+          <form action="{% url 'accounts:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Log Out</button>
+          </form>
         </section>
       </div>
     </main>
 
     <script>
+      setTimeout(() => {
+        document.querySelectorAll(".alert").forEach((el) => {
+          el.style.transition = "opacity 0.6s ease";
+          el.style.opacity = "0";
+          setTimeout(() => el.remove(), 600); // Remove after fade
+        });
+      }, 3000);
+
       function showTab(button, tabId) {
         document
           .querySelectorAll(".settings-section")

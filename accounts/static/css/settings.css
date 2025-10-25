@@ -1,3 +1,36 @@
+/** This is the general css for all pages **/
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+  color: #333;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  background-color: #192b3d;
+  color: white;
+}
+
+.header-container nav a {
+  color: white;
+  margin-left: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-container nav a:hover,
+.header-container nav a.active {
+  background-color: #f5f6fa;
+  color: #192b3d;
+  border-radius: 6px;
+  padding: 4px 7px;
+}
+
 /* Settings Page Layout */
 .settings-layout {
   display: flex;
@@ -113,4 +146,27 @@ input[type="checkbox"] {
 
 .settings-section button:hover {
   background-color: #1a252f;
+}
+.messages {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.alert {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert.error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #ef4444;
 }

@@ -5,17 +5,34 @@
 <div class="profile-sidepanel">
   <div class="profile-box">
     <!-- NEED TO IMPORT FROM SETTIGNS -->
-    <img src="media-4.jpg" alt="media-2.jpg" class="profile-pic" />
-    <h2 class="profile-name">{{ profile_user.username }}</h2>
+    {% if profile_user.profile.avatar %}
+    <img
+      src="{{ profile_user.profile.avatar.url }}"
+      alt="Profile picture"
+      class="profile-pic"
+    />
+    {% else %}
+    <img
+      src="{% static 'accounts/img/avatar-placeholder.png' %}"
+      alt="Default avatar"
+      class="profile-pic"
+    />
+    {% endif %}
 
-    <!-- NEED TO IMPORT FROM SETTIGNS -->
-    <!-- <p class="profile-bio">Actress • Simger</p> -->
+    <h2 class="profile-name">
+      {{ profile_user.profile.display_name|default:profile_user.username }}
+    </h2>
+
+    {% if profile_user.profile.bio %}
+    <p class="profile-bio">{{ profile_user.profile.bio }}</p>
+    {% endif %}
 
     <div class="profile-details">
       <div><strong>{{ user_posts.count }}</strong><span> Posts</span></div>
     </div>
-
-    <button class="edit-button">Edit Profile</button>
+    <a class="edit-button" href="{% url 'accounts:settings' %}#profile"
+      >Edit Profile</a
+    >
   </div>
 </div>
 
