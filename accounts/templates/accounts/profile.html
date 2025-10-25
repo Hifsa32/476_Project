@@ -19,14 +19,16 @@
   </div>
 </div>
 
-<!-- Right panel with posts, likes and media -->
+<!-- Right panel with posts and Notification -->
 <section class="profile-content">
   <div class="profile-tabs">
     <button class="tab active" onclick="showTab('posts')">Posts</button>
-    <button class="tab" onclick="showTab('notifications')">
-      Notifications {% if has_new_notifications %}
-      <span style="color: red">!</span>
-      {% endif %}
+
+    <button
+      class="tab notification-tab {% if has_new_notifications %}unread{% endif %}"
+      onclick="handleNotificationClick(event)"
+    >
+      Notifications
     </button>
   </div>
 
@@ -61,8 +63,26 @@
 </section>
 
 <script>
+  function handleNotificationClick(event) {
+    const tabName = "notifications";
+
+    showTab(tabName);
+
+    const readUrl = "{% url 'posts:mark_notifications_read' %}";
+
+    fetch(readUrl)
+      .then((response) => {
+        if (response.ok) {
+          const tabButton = event.target.closest(".notification-tab");
+          tabButton.classList.remove("unread");
+        }
+      })
+      .catch((error) =>
+        console.error("Error marking notifications as read:", error)
+      );
+  }
+
   function showTab(tabName) {
-    // Hide all tab content
     var contents = document.querySelectorAll(".tab-content");
     for (var i = 0; i < contents.length; i++) {
       contents[i].style.display = "none";
@@ -77,7 +97,9 @@
     document.getElementById(tabName).style.display = "block";
     document.getElementById(tabName).classList.add("active");
 
-    event.target.classList.add("active");
+    if (event && event.currentTarget) {
+      event.currentTarget.classList.add("active");
+    }
   }
 </script>
 {% endblock content %}

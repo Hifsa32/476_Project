@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Post, Report, PostReportSubject
+from .models import Post, Report, PostReportSubject, Notification
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User 
 from .forms import PostForm 
 from django.contrib import messages
 from .observers import PostTakedownObserver, AuthorNotificationObserver
+from django.http import HttpResponse
 
 
 def home(request):
@@ -75,11 +76,9 @@ def report_post(request, post_id):
 
         errors = []
 
-        # 1) must select at least one reason
         if not reasons:
             errors.append("Please select at least one reason.")
 
-        # 2) if 'other' selected, text is required
         if "other" in reasons and not other_text:
             errors.append("Please explain why you are reporting this post.")
 
@@ -89,7 +88,6 @@ def report_post(request, post_id):
             ctx = {"selected_reasons": set(reasons), "other_text": other_text, "details": details}
             return render(request, "report.html", ctx)
 
-        # save if valid
         Report.objects.create(
             reasons=reasons,
             other_reason=other_text if "other" in reasons else "",
@@ -106,3 +104,16 @@ def report_post(request, post_id):
         return redirect("posts:home")
 
     return render(request, "posts/report.html", {"post": post})
+
+
+#Notification 
+
+@login_required
+def mark_notifications_read(request):
+
+    Notification.objects.filter(
+        user=request.user, 
+        is_new=True
+    ).update(is_new=False)
+    return HttpResponse(status=200)
+

@@ -8,5 +8,6 @@ urlpatterns = [
      path("", home, name="home"), 
      path("new/", create_post, name="create_post"),
      path('report/<int:post_id>/', views.report_post, name='report_post'),
+     path('notifications/read/', views.mark_notifications_read, name='mark_notifications_read'),
    
 ]
