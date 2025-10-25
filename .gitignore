@@ -1,8 +1,7 @@
-# Python generated files
+# Django-specific ignores
+*.sqlite3
 __pycache__/
 *.pyc
 
-# Django specific files
-*.log
-*.sqlite3
-db.sqlite3
+# Django migration files (optional, but good practice for cleanup)
+*/migrations/__pycache__/
