@@ -16,7 +16,7 @@ Page{% endblock %} {% block content %} {% if user.is_authenticated %}
     <p>{{ post.description }}</p>
 
     <a href="{% url 'posts:report_post' post_id=post.id %}" class="report-link"
-      >!</a
+      >Report Post</a
     >
   </div>
   {% endfor %} {% else %} {% for post in posts %}
