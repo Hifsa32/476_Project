@@ -3,14 +3,23 @@ from django.db import models
 from django.contrib.auth.models import User 
 from django.conf import settings
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 from .observers import Subject
+from datetime import date
 
+def validate_past_or_present_datetime(value):
+    if value.date() > date.today():
+        raise ValidationError(
+            'Improper Date Value',
+            params={'value': value},
+        )
+    
 class Post(models.Model):
     is_active = models.BooleanField(default=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, blank=True)
     description = models.TextField()
-    date_time = models.DateTimeField()
+    date_time = models.DateTimeField(validators=[validate_past_or_present_datetime])
     location = models.CharField(max_length=100)
 
 

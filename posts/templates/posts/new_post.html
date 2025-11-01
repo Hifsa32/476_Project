@@ -9,7 +9,13 @@
     <label for="{{ form.location_for_label }}">Location</label>
     {{ form.location }}
     <label for="{{ form.date_time_for_label }}">Time</label>
-    {{ form.date_time }}
+    {{ form.date_time }} {% if form.date_time.errors %}
+    <div class="alert date-error" role="alert">
+      {% for error in form.date_time.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
     <label for="{{ form.tag_for_label }}">Tag</label>
     {{ form.tag }}
     <label for="{{ form.description_for_label }}">Description</label>

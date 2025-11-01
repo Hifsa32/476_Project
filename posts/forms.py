@@ -24,7 +24,7 @@ class PostForm(forms.ModelForm):
                 # Tailwind class for full width and styling
                 'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg resize-y'
             }),
-             'date_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+             'date_time': forms.DateInput(attrs={'type': 'date'}),
              'location': forms.TextInput(attrs={'placeholder': 'City, State/Country'}),
              'tag': forms.Select(attrs={
                 'class': 'w-full px-4 py-2 border border-gray-300 rounded-lg'
