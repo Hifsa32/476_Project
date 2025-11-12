@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: unfiltered-web
+    env: python
+    branch: main
+    buildCommand: ./build.sh
+    startCommand: gunicorn core_config.core.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: unfiltered-db
+          property: connectionString
+      - key: RENDER_EXTERNAL_HOSTNAME
+        fromService:
+          name: unfiltered-web
+          type: web
+          property: host
+
+databases:
+  - name: unfiltered-db
+    plan: free
