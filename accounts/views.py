@@ -74,7 +74,7 @@ def settings_view(request):
 
         if which == "account":
             uform = UserUpdateForm(request.POST, instance=user)
-            pform = ProfileForm(instance=user)
+            pform = ProfileForm(instance=user.profile)
             pwform = SecurityForm(user)
 
             if uform.is_valid():

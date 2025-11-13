@@ -5,10 +5,10 @@
   class="{% if request.user.is_authenticated and request.user.profile.theme == 'dark' %}dark{% endif %}"
 >
   <head>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'loginSignup/css/style.css' %}" />
-    <title>{% block title %}LoginSignup{% endblock %}</title>
+    <title>{% block title %}Profile{% endblock %}</title>
   </head>
+
   <body>
     <header class="header-container">
       <h1 class="app-name">Unfiltered</h1>

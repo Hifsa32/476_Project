@@ -14,6 +14,9 @@ from pathlib import Path
 import os 
 import dj_database_url
 from dotenv import load_dotenv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -150,15 +153,21 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 if (BASE_DIR / "static").exists():
     STATICFILES_DIRS = [BASE_DIR / "static"]
 
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET")
+)
 
 STORAGES = {
-     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     }
 }
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
