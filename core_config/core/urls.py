@@ -7,5 +7,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')), 
     path('', include('posts.urls')), 
+    path('__db__/', db_health),     
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -6,6 +6,9 @@ from .forms import PostForm
 from django.contrib import messages
 from .observers import PostTakedownObserver, AuthorNotificationObserver
 from django.http import HttpResponse
+from django.http import JsonResponse
+from django.db import connection
+from django.contrib.auth import get_user_model
 
 
 def home(request):
@@ -104,6 +107,14 @@ def report_post(request, post_id):
         return redirect("posts:home")
 
     return render(request, "posts/report.html", {"post": post})
+
+def db_health(request):
+    User = get_user_model()
+    return JsonResponse({
+        "db_vendor": connection.vendor,
+        "db_name": connection.settings_dict.get("NAME"),
+        "user_count": User.objects.count(),
+    })
 
 
 #Notification 
